@@ -1,2 +1,4 @@
 # m3-Zark247
-m3-Zark247 created by GitHub Classroom
+## 2 Project samples:  
+* [Cube Sprint](https://zark247.github.io/Cube-Sprint/): first game created with help from a tutorial (click the title to play the game in browser).  
+* TestVita: applying what I learned in a tutorial to a different platform (PS Vita).
