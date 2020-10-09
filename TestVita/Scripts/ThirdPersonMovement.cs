@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PSVita;
 
 public class ThirdPersonMovement : MonoBehaviour {
 
@@ -10,13 +11,22 @@ public class ThirdPersonMovement : MonoBehaviour {
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    public float lookSensitivity = 100f;
+    float xRotation = 0f;
+
 	// Update is called once per frame
 	void Update () {
-        //simple movement
+        //simple movement and look input
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        float lookX = Input.GetAxis("Right Stick Horizontal") * lookSensitivity * Time.deltaTime;
+        float lookY = Input.GetAxis("Right Stick Vertical") * lookSensitivity* Time.deltaTime;
         //direction vector comprised of an x,y,and z, normalized to not affect speed
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        //controlls the up and down movement of the camera
+        cam.Rotate(Vector3.up * lookX);
+        xRotation -= lookY;
 
         if(direction.magnitude >= 0.1f)
         {
