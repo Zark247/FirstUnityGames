@@ -10,6 +10,7 @@ public class ThirdPersonMovement : MonoBehaviour {
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    float gravity = 0f;
 
     public float lookSensitivity = 100f;
     float xRotation = 0f;
@@ -41,5 +42,5 @@ public class ThirdPersonMovement : MonoBehaviour {
             //moves the player in the direction they have input, Time.deltaTime disregards the system specs so it runs the same on every system
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
-	}
+    }
 }
