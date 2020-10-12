@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.PSVita;
 
 public class ThirdPersonMovement : MonoBehaviour {
@@ -10,7 +8,6 @@ public class ThirdPersonMovement : MonoBehaviour {
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-    float gravity = 0f;
 
     public float lookSensitivity = 100f;
     float xRotation = 0f;
@@ -41,6 +38,12 @@ public class ThirdPersonMovement : MonoBehaviour {
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //moves the player in the direction they have input, Time.deltaTime disregards the system specs so it runs the same on every system
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
+        //when player reaches Red Cube
+        //if((controller.collisionFlags & CollisionFlags.CollidedSides) != 0)
+        if(controller.isTrigger)
+        {
+            Debug.Log("You hit something");
         }
     }
 }
